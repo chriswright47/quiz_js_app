@@ -12,4 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require shadiJS
+//= require ../../../vendor/assets/javascripts/mustache
+//= require quizz
 //= require_tree .
+
+App.initialize();
