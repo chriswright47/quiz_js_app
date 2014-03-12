@@ -33,13 +33,26 @@ $(function () {
     var choice_id = $(this).data('answer-id');
     var question_id = $(this).data('question-id');
     $.post('questions/'+question_id+'/answers.json', {session_key: key, choice_id: choice_id}, function(response) {
-      var answer = new Answer(response.status.correct);
+      correct = response.status.correct
+      var answer = new Answer(correct);
+      if (correct) {
+        alert('Nice! You got that one right');
+      }
+      else {
+        alert('Oops, that was not the right answer');
+      }
       quiz.addAnswer(answer);
       $('.status_bar').html(renderQuizStatus(response.status));
-      $.get('/quizzes/'+quiz.id+'/questions/next.json', {session_key: key}, function(response) {
-        var question = new Question(response.question.question_id, response.question, response.question.choices);
-        $('.container').html(question.render());
-      });
+      if (response.status.more_questions) {
+        $.get('/quizzes/'+quiz.id+'/questions/next.json', {session_key: key}, function(response) {
+          var question = new Question(response.question.question_id, response.question, response.question.choices);
+          $('.container').html(question.render());
+        });
+      }
+      else {
+        $('.status_bar').html('');
+        $('.container').html(quiz.endQuizMessage(response.status));
+      }
     });
 
   });
