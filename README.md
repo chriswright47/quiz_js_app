@@ -9,7 +9,8 @@ rake db:setup
 
 rails s
 
-Then visit localhost:3000 to interact with the application
+Then visit localhost:3000 with your browser to interact with the application
+(there is no styling whatsoever, the focus of this is to deal with json and the apps API)
 
 
 #### Request
