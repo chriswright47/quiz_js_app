@@ -3,6 +3,14 @@
 ## This app exposes an API for a simple quiz appication.
 It is a one-page app using jQuery, Javascript, and AJAX to render questions to the user, allow her to submit answers, tell her whether or not her submitted answer was correct, and give her her final correct / incorrect tally.
 
+To get started, you can clone this repo and run the following commands:
+
+rake db:setup
+
+rails s
+
+Then visit localhost:3000 to interact with the application
+
 
 #### Request
 
